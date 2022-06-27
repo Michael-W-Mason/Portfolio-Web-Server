@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.3'
 services:
   reverse-proxy:
     build:
@@ -8,10 +8,13 @@ services:
     restart: "always"
     ports: 
       - "80:80"
+      - "443:443"
     networks:
       - "app-network"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl/nginx.crt:/etc/nginx/ssl/nginx.crt
+      - ./ssl/nginx.key:/etc/nginx/ssl/nginx.key
 networks:
   app-network:
     external: true
