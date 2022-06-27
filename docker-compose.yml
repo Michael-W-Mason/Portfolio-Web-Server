@@ -5,7 +5,7 @@ services:
       context: ./
     image: michaelmason1998/portfolio_nginx_server
     container_name: nginx
-    restart: "always"
+    restart: unless-stopped
     ports: 
       - "80:80"
       - "443:443"
